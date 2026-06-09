@@ -20,6 +20,7 @@ import LatestUpdates from "./pages/LatestUpdates";
 import LatestUpdateDetail from "./pages/LatestUpdateDetail";
 import Contact from "./pages/Contact";
 import Gallery from "./pages/Gallery";
+import NotFound from "./pages/NotFound";
 
 function AppContent({ isDemoModalOpen, handleOpenDemoModal, handleCloseDemoModal }) {
   const location = useLocation();
@@ -67,7 +68,9 @@ function AppContent({ isDemoModalOpen, handleOpenDemoModal, handleCloseDemoModal
           <Route path="/latest-update/:slug" element={<LatestUpdateDetail onBookDemoClick={handleOpenDemoModal} />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Home onBookDemoClick={handleOpenDemoModal} />} />
+          <Route path="/404" element={<NotFound code="404" title="Page Not Found" />} />
+          <Route path="/500" element={<NotFound code="500" title="Internal Server Error" message="Something went wrong on our end. Our developers are looking into it." />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
